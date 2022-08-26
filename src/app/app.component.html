@@ -1,25 +1,15 @@
 <header>
   <h1>Todos App:</h1>
-  <nav>nav</nav>
 </header>
 
 <section>
   <label for="todoInput">
-    <input name="todoInput" type="text">
-    <button (click)="onAddTodo()">Add</button>
+    <input name="todoInput" [(ngModel)]="titleInput" type="text">
+    <button (click)="onAddTodo()" [disabled]="!titleInput">Add</button>
   </label>
   <main>
     <ul>
-      <li *ngFor="let todo of (todos$ | async)">
-        <label>
-          <input type="checkbox" [checked]="todo.isComplete">
-          <span [ngClass]="{'completed': todo.isComplete}">{{todo.title}}</span>
-        </label>
-      </li>
+      <app-todo *ngFor="let todo of (todos$ | async)" [todo]="todo"></app-todo>
     </ul>
   </main>
 </section>
-
-<footer>
-  footer
-</footer>

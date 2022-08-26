@@ -10,8 +10,8 @@ export const TodoReducer = createReducer(
   on(TodoActions.addTodo, (todos, todo) => {
     return [...todos, todo];
   }),
-  // on(TodoActions.updateTodo, (state, todo) => ({
-  //   ...state,
-  //   todos: state.todos.map((t) => (t.id === todo.id ? todo : t)),
-  // })),
+  on(TodoActions.updateTodo, (todos, todo) => todos.map((t) => (t.id === todo.id ? {
+    ...todo,
+    modifiedAt: new Date()
+  } : t))),
 );

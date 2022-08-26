@@ -13,7 +13,8 @@ import { Store } from '@ngrx/store';
 export class AppComponent {
   title = 'ngrx-simple-todos';
   todos$: Observable<ReadonlyArray<Todo>>;
-  constructor(private store: Store<{todos:[]}>) {
+  titleInput = '';
+  constructor(private store: Store<AppState>) {
     this.store.select(({todos})=>todos).pipe(tap((t)=>console.log(t)
     )).subscribe()
     
@@ -22,13 +23,15 @@ export class AppComponent {
   ngOnInit() {}
 
   onAddTodo() {
+    if (!this.titleInput) return;
     const id = Math.random();
     this.store.dispatch(addTodo({
       id: `${id}`,
-      title: `Todo: ${id}`,
-      isComplete: id < 0.5 ? true : false,
+      title: this.titleInput,
+      isComplete: false,
       createdAt: new Date(),
       modifiedAt: new Date()
-    }))
+    }));
+    this.titleInput = '';
   }
 }

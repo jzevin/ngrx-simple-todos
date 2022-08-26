@@ -1,0 +1,6 @@
+<li *ngIf="todo" [class]="{'is-complete': todo.isComplete}">
+  <label>
+    <input type="checkbox" (change)="onChangeIsComplete()" [checked]="todo.isComplete">
+    <span [ngClass]="{'completed': todo.isComplete}">{{todo.title}}</span>
+  </label>
+</li>
