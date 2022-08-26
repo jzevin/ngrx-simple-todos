@@ -6,10 +6,17 @@
 <section>
   <label for="todoInput">
     <input name="todoInput" type="text">
-    <button>Add</button>
+    <button (click)="onAddTodo()">Add</button>
   </label>
   <main>
-
+    <ul>
+      <li *ngFor="let todo of (todos$ | async)">
+        <label>
+          <input type="checkbox" [checked]="todo.isComplete">
+          <span [ngClass]="{'completed': todo.isComplete}">{{todo.title}}</span>
+        </label>
+      </li>
+    </ul>
   </main>
 </section>
 
