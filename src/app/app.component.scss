@@ -22,3 +22,14 @@
   cursor: pointer;
   height: 100%;
 }
+
+
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  background: rgb(152, 178, 181);
+  padding: 1em;
+}
