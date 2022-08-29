@@ -14,4 +14,5 @@ export const TodoReducer = createReducer(
     ...todo,
     modifiedAt: new Date()
   } : t))),
+  on(TodoActions.deleteTodo, (todos, todo) => todos.filter((t) => t.id !== todo.id))
 );

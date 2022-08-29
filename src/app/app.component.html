@@ -3,9 +3,9 @@
 </header>
 
 <section>
-  <label for="todoInput">
-    <input name="todoInput" [(ngModel)]="titleInput" type="text">
-    <button (click)="onAddTodo()" [disabled]="!titleInput">Add</button>
+  <label class="todo-input-label" for="todoInput">
+    <input class="todo-input" name="todoInput" (keyup.enter)="onAddTodo()" [(ngModel)]="titleInput" type="text">
+    <button class="todo-input-btn" (click)="onAddTodo()" [disabled]="!titleInput">Add</button>
   </label>
   <main>
     <ul>

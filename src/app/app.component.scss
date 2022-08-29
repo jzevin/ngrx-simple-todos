@@ -1,0 +1,24 @@
+.todo-input-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  background: #333;
+  height: 2em;
+}
+
+.todo-input {
+  flex: 1 1 auto;
+  font-size: 1rem;
+  padding: 0.25em;
+  border: none;
+  height: calc(100% - 2px);
+  margin-left: 1px;
+}
+
+.todo-input-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+}

@@ -2,7 +2,7 @@ import { AppState, selectTodos } from './todo.selectors';
 import { Store } from '@ngrx/store';
 import { Todo } from './todo.model';
 import { Component, Input, OnInit } from '@angular/core';
-import { updateTodo } from './todo.actions';
+import { deleteTodo, updateTodo } from './todo.actions';
 
 @Component({
   selector: 'app-todo',
@@ -12,9 +12,32 @@ import { updateTodo } from './todo.actions';
 export class TodoComponent implements OnInit {
   @Input()
   todo: Readonly<Todo> | null = null;
+  isEditing: boolean = false;
+  title: string | undefined;
+
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.title = this.todo?.title;
+  }
+
+  onClickEdit() {
+    this.isEditing = true;
+  }
+
+  onSave() {
+    console.log('onSave');
+    this.store.dispatch(
+      updateTodo({
+        ...this.todo!,
+        title: this.title!
+      })
+    );
+    this.isEditing = false;
+  }
+
+  onClickDelete() {
+    this.store.dispatch(deleteTodo(this.todo as Todo));
   }
 
   onChangeIsComplete() {

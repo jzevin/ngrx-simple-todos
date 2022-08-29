@@ -20,7 +20,14 @@ export class AppComponent {
     
     this.todos$ = this.store.select(selectTodos);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.titleInput = 'super duper';
+    this.onAddTodo();
+
+    this.titleInput = 'what the heck';
+    this.onAddTodo();
+
+  }
 
   onAddTodo() {
     if (!this.titleInput) return;

@@ -1,4 +1,47 @@
+:host {
+  display: flex;
+  background: #eee;
+  padding: 1rem;
+  // width: 50%;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  li, label {
+    display: flex;
+    flex: 1 1 auto;
+  }
+}
+
+.title, .title-input {
+  flex: 1 1 auto;
+}
+
 .is-complete {
-  text-decoration: line-through;
-  opacity: 0.5;
+  opacity: 0.25;
+  .title {
+    text-decoration: line-through;
+  }
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background: none;
+  border: none;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25em;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+  &:hover {
+    transform: scale(1.25);
+  }
 }

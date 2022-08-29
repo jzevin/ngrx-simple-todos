@@ -1,6 +1,15 @@
 <li *ngIf="todo" [class]="{'is-complete': todo.isComplete}">
   <label>
-    <input type="checkbox" (change)="onChangeIsComplete()" [checked]="todo.isComplete">
-    <span [ngClass]="{'completed': todo.isComplete}">{{todo.title}}</span>
+    <ng-container *ngIf="isEditing">
+      <input class="title-input" [(ngModel)]="title" (keyup.enter)="onSave()" (blur)="onSave()" autofocus />
+    </ng-container>
+    <ng-container *ngIf="!isEditing">
+      <input type="checkbox" (change)="onChangeIsComplete()" [checked]="todo.isComplete">
+      <div class="title">{{todo.title}}</div>
+      <div class="actions">
+        <button (click)="onClickEdit()">✏️</button>
+        <button (click)="onClickDelete()">🗑️</button>
+      </div>
+    </ng-container>
   </label>
 </li>
