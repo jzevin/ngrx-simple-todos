@@ -1,10 +1,5 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-
-import { Todo } from './todo.model';
-
-export type AppState = {
-  todos: ReadonlyArray<Todo>;
-};
+import { AppState } from './../app.state.model';
+import { createSelector } from '@ngrx/store';
 
 // const selectTodoss = createFeatureSelector<ReadonlyArray<Todo>>('todos');
 

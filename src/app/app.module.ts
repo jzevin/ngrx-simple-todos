@@ -1,3 +1,4 @@
+import { UiStateReducer } from './app.state.ui.reducers';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,7 @@ import { TodoComponent } from './todo/todo.component';
   imports: [
     BrowserModule,
     FormsModule,
-    StoreModule.forRoot({todos: TodoReducer}),
+    StoreModule.forRoot({todos: TodoReducer, ui: UiStateReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],

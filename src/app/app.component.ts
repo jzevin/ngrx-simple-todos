@@ -1,8 +1,11 @@
-import { AppState, selectTodos } from './todo/todo.selectors';
+import { toggleViewMode } from './app.state.ui.actions';
+import { selectUiState } from './app.state.ui.selectors';
+import { AppState, UiState, uiStateViewMode } from './app.state.model';
+import { selectTodos } from './todo/todo.selectors';
 import { addTodo } from './todo/todo.actions';
 import { Todo } from './todo/todo.model';
-import { Component } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Component, HostBinding } from '@angular/core';
+import { first, map, Observable, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -14,12 +17,18 @@ export class AppComponent {
   title = 'ngrx-simple-todos';
   todos$: Observable<ReadonlyArray<Todo>>;
   titleInput = '';
+  uiStateViewMode$: Observable<uiStateViewMode> = this.store.select(selectUiState).pipe(map(state => state.viewMode));
+
+  @HostBinding('class') get getViewModeClass() {
+    let val;
+    this.uiStateViewMode$.pipe(first()).subscribe(mode => val = mode);
+    return val;
+  }
+
   constructor(private store: Store<AppState>) {
-    this.store.select(({todos})=>todos).pipe(tap((t)=>console.log(t)
-    )).subscribe()
-    
     this.todos$ = this.store.select(selectTodos);
   }
+  
   ngOnInit() {
     this.titleInput = 'super duper';
     this.onAddTodo();
@@ -40,5 +49,9 @@ export class AppComponent {
       modifiedAt: new Date()
     }));
     this.titleInput = '';
+  }
+
+  onClickToggleViewMode() {
+    this.store.dispatch(toggleViewMode());
   }
 }

@@ -1,5 +1,10 @@
 <header>
-  <h1>Todos App:</h1>
+  <h1 class="title" >
+    <div class="title-text">✅ Todo App:</div>
+    <div class="title-actions">
+      <button class="title-btn" (click)="onClickToggleViewMode()">View mode ({{ (uiStateViewMode$ | async) === 'light' ? 'dark' : 'light' }})</button>
+    </div>
+  </h1>
   <label class="todo-input-label" for="todoInput">
     <input class="todo-input" name="todoInput" (keyup.enter)="onAddTodo()" [(ngModel)]="titleInput" type="text">
     <button class="todo-input-btn" (click)="onAddTodo()" [disabled]="!titleInput">Add</button>

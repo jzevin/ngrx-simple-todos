@@ -15,6 +15,10 @@
   flex: 1 1 auto;
 }
 
+.title {
+  display: flex;
+}
+
 .is-complete {
   opacity: 0.25;
   .title {

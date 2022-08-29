@@ -1,4 +1,4 @@
-import { AppState, selectTodos } from './todo.selectors';
+import { AppState } from './../app.state.model';
 import { Store } from '@ngrx/store';
 import { Todo } from './todo.model';
 import { Component, Input, OnInit } from '@angular/core';
