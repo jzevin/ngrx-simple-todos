@@ -1,9 +1,9 @@
 :host {
   display: flex;
-  background: #eee;
+  background: var(--todo-bg-color);
   padding: 1rem;
   // width: 50%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--bkg-color-darker);
   justify-content: space-between;
   li, label {
     display: flex;
@@ -48,4 +48,11 @@ button {
   &:hover {
     transform: scale(1.25);
   }
+}
+
+input {
+  background: var(--todo-input-bg-color);
+  color: var(--todo-input-txt-color);
+  border: 1px solid var(--todo-input-border-color);
+  outline: none;
 }
