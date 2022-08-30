@@ -30,11 +30,10 @@ export class AppComponent {
   }
   
   ngOnInit() {
-    this.titleInput = 'super duper';
-    this.onAddTodo();
-
-    this.titleInput = 'what the heck';
-    this.onAddTodo();
+    for (let i = 0; i < Array(5).length; i++) {
+      this.titleInput = `This is a Todo - ${i+1}`;
+      this.onAddTodo();
+    }
 
   }
 
